@@ -81,7 +81,12 @@ class MultiHeadAttention(nn.Module):
         d_k = q.size(-1)
         attention_scores = torch.matmul(q, k.transpose(-2, -1)) / math.sqrt(d_k)
         if mask is not None:
-            attention_scores = attention_scores.masked_fill(mask == 0, -1e9)
+          mask_value = -1e9
+          if attention_scores.dtype == torch.float16:
+              mask_value = -65504.0
+
+          attention_scores = attention_scores.masked_fill(mask == 0, mask_value)
+            # attention_scores = attention_scores.masked_fill(mask == 0, -1e9)
         attention_weights = torch.softmax(attention_scores, dim=-1) # (Batch, n_heads, seq_len, seq_len)
         if dropout is not None:
             attention_weights = dropout(attention_weights)
@@ -122,10 +127,10 @@ class EncoderLayer(nn.Module):
         return self.residual2(x, self.ffn)
 
 class Encoder(nn.Module):
-    def __init__(self, vocab_size, d_model, n_heads, d_ff, num_layers, dropout=0.1):
+    def __init__(self, vocab_size, seq_len, d_model, n_heads, d_ff, num_layers, dropout=0.1):
         super().__init__()
         self.embedding = InputEmbedding(vocab_size, d_model, dropout)
-        self.positional_encoding = PositionalEncoding(d_model, 5000, dropout)  # Assuming max sequence length of 5000
+        self.positional_encoding = PositionalEncoding(d_model, seq_len, dropout)  # Assuming max sequence length of 5000
         self.layers = nn.ModuleList([EncoderLayer(d_model, n_heads, d_ff, dropout) for _ in range(num_layers)])
         self.norm = LayerNormalization()
 
@@ -152,10 +157,10 @@ class DecoderLayer(nn.Module):
         return self.residual3(x, self.ffn)
 
 class Decoder(nn.Module):
-    def __init__(self, vocab_size, d_model, n_heads, d_ff, num_layers, dropout=0.1):
+    def __init__(self, vocab_size, seq_len, d_model, n_heads, d_ff, num_layers, dropout=0.1):
         super().__init__()
         self.embedding = InputEmbedding(vocab_size, d_model, dropout)
-        self.positional_encoding = PositionalEncoding(d_model, 5000, dropout)  # Assuming max sequence length of 5000
+        self.positional_encoding = PositionalEncoding(d_model, seq_len, dropout)  # Assuming max sequence length of 5000
         self.layers = nn.ModuleList([DecoderLayer(d_model, n_heads, d_ff, dropout) for _ in range(num_layers)])
         self.norm = LayerNormalization()
 
@@ -175,10 +180,10 @@ class LinearLayer(nn.Module):
         return torch.log_softmax(self.linear(x), dim = -1)  # (Batch, seq_len, d_model) -> (Batch, seq_len, vocab_size)
     
 class Transformer(nn.Module):
-    def __init__(self, src_vocab_size, tgt_vocab_size, d_model = 512, n_heads = 8, d_ff = 2048, num_layers = 6, dropout=0.1):
+    def __init__(self, src_vocab_size, tgt_vocab_size, seq_len, d_model = 512, n_heads = 8, d_ff = 2048, num_layers = 6, dropout=0.1):
         super().__init__()
-        self.encoder = Encoder(src_vocab_size, d_model, n_heads, d_ff, num_layers, dropout)
-        self.decoder = Decoder(tgt_vocab_size, d_model, n_heads, d_ff, num_layers, dropout)
+        self.encoder = Encoder(src_vocab_size, seq_len, d_model, n_heads, d_ff, num_layers, dropout)
+        self.decoder = Decoder(tgt_vocab_size, seq_len, d_model, n_heads, d_ff, num_layers, dropout)
         self.linear = LinearLayer(d_model, tgt_vocab_size)
 
     def forward(self, src, tgt, src_mask, tgt_mask):

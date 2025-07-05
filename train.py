@@ -95,7 +95,7 @@ def check_tokenizer(config, ds, lang):
 
 def get_dataset(config):
     dataset = load_dataset("MRR24/English_to_Telugu_Bilingual_Sentence_Pairs", split='train')
-    dataset = dataset.shuffle(seed=42).select(range(60000))
+    dataset = dataset.shuffle(seed=42).select(range(40000))
     tokenizer_src = check_tokenizer(config, dataset, config['lang_src'])
     tokenizer_tgt = check_tokenizer(config, dataset, config['lang_tgt'])
 
@@ -129,6 +129,7 @@ def get_model(config, vocab_size_src, vocab_size_tgt):
     model = Transformer(
         src_vocab_size=vocab_size_src,
         tgt_vocab_size=vocab_size_tgt,
+        seq_len=config['seq_len'],
         d_model=config['d_model'],
     )
     return model
@@ -147,7 +148,7 @@ def train_model(config):
     optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'], eps=1e-9)
     
     # adding a mixed precision scaler
-    scaler = GradScaler(device_type='cuda'))
+    scaler = GradScaler()
 
     inital_epoch = 0
     global_step = 0
@@ -196,6 +197,14 @@ def train_model(config):
             'optimizer_state_dict': optimizer.state_dict(),
             'global_step': global_step
         }, model_filename)
+        # # If model = torch.compile(...)
+        # torch.save({
+        #     'epoch': epoch,
+        #     'model_state_dict': model._orig_mod.state_dict(),  # no extra prefix
+        #     'optimizer_state_dict': optimizer.state_dict(),
+        #     'global_step': global_step
+        # }, model_filename)
+
 
 if __name__ == '__main__':
     config = get_config()

@@ -5,9 +5,13 @@ def get_config():
         "batch_size": 8,
         "num_epochs": 10,
         "lr" : 10**-4,
-        "seq_len" : 350,
+        "seq_len": 512,
         "d_model" : 512,
-        "lang_src" : "Input",  #english for the given dataset
+        "n_heads": 8,
+        "d_ff": 2048,
+        "num_layers": 6,
+        "dropout": 0.1,
+        "lang_src" : "Input", #english for the given dataset
         "lang_tgt" : "Output", #telugu
         "model_folder" : "weights",
         "model_filename" : "transformer_model_",
@@ -15,6 +19,7 @@ def get_config():
         "tokenizer_file" : "tokenizer_{0}.json",
         "experimental_name" : "runs/transformer_model_"
     }
+
 
 def get_weights_file_path(config, epoch=None):
     model_folder = config['model_folder']
@@ -24,8 +29,8 @@ def get_weights_file_path(config, epoch=None):
 
 # Find the latest weights file in the weights folder
 def latest_weights_file_path(config):
-    model_folder = f"{config['datasource']}_{config['model_folder']}"
-    model_filename = f"{config['model_basename']}*"
+    model_folder = f"{config['model_folder']}"
+    model_filename = f"{config['model_filename']}*"
     weights_files = list(Path(model_folder).glob(model_filename))
     if len(weights_files) == 0:
         return None

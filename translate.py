@@ -1,6 +1,6 @@
 from pathlib import Path
 from config import get_config, latest_weights_file_path 
-from model import build_transformer
+from model import Transformer
 from tokenizers import Tokenizer
 from datasets import load_dataset
 from dataset import BilingualDataset, causal_mask
@@ -14,12 +14,25 @@ def translate(sentence: str):
     config = get_config()
     tokenizer_src = Tokenizer.from_file(str(Path(config['tokenizer_file'].format(config['lang_src']))))
     tokenizer_tgt = Tokenizer.from_file(str(Path(config['tokenizer_file'].format(config['lang_tgt']))))
-    model = build_transformer(tokenizer_src.get_vocab_size(), tokenizer_tgt.get_vocab_size(), config["seq_len"], config['seq_len'], d_model=config['d_model']).to(device)
+    model = Transformer(tokenizer_src.get_vocab_size(), tokenizer_tgt.get_vocab_size(), seq_len=config['seq_len'], d_model=config['d_model']).to(device)
 
     # Load the pretrained weights
     model_filename = latest_weights_file_path(config)
-    state = torch.load(model_filename)
-    model.load_state_dict(state['model_state_dict'])
+    state = torch.load(model_filename, map_location=device)
+    # print("Loading weights from:", model_filename)
+    # print("Model keys expected:")
+    # for k in model.state_dict().keys():
+    #     print("   ", k)
+    cleaned_state_dict = {
+      k.replace('_orig_mod.', ''): v for k, v in state['model_state_dict'].items()
+    } 
+    print("Checkpoint keys:", cleaned_state_dict.keys())
+    # print("Model keys in checkpoint:")
+    # for k in cleaned_state_dict.keys():
+    #     print("   ", k)
+    # model.load_state_dict(state['model_state_dict'])
+    # Load the cleaned state dict
+    model.load_state_dict(cleaned_state_dict)
 
     # if the sentence is a number use it as an index to the test set
     label = ""
@@ -37,15 +50,15 @@ def translate(sentence: str):
         # Precompute the encoder output and reuse it for every generation step
         source = tokenizer_src.encode(sentence)
         source = torch.cat([
-            torch.tensor([tokenizer_src.token_to_id('[SOS]')], dtype=torch.int64), 
+            torch.tensor([tokenizer_src.token_to_id('<SOS>')], dtype=torch.int64), 
             torch.tensor(source.ids, dtype=torch.int64),
-            torch.tensor([tokenizer_src.token_to_id('[EOS]')], dtype=torch.int64),
-            torch.tensor([tokenizer_src.token_to_id('[PAD]')] * (seq_len - len(source.ids) - 2), dtype=torch.int64)
+            torch.tensor([tokenizer_src.token_to_id('<EOS>')], dtype=torch.int64),
+            torch.tensor([tokenizer_src.token_to_id('<PAD>')] * (seq_len - len(source.ids) - 2), dtype=torch.int64)
         ], dim=0).to(device)
-        source_mask = (source != tokenizer_src.token_to_id('[PAD]')).unsqueeze(0).unsqueeze(0).int().to(device)
+        source_mask = (source != tokenizer_src.token_to_id('<PAD>')).unsqueeze(0).unsqueeze(0).int().to(device)
 
         # Initialize the decoder input with the sos token
-        decoder_input = torch.empty(1, 1).fill_(tokenizer_tgt.token_to_id('[SOS]')).type_as(source).to(device)
+        decoder_input = torch.empty(1, 1).fill_(tokenizer_tgt.token_to_id('<SOS>')).type_as(source).to(device)
 
         # Print the source sentence and target start prompt
         if label != "": print(f"{f'ID: ':>12}{id}") 

@@ -1,0 +1,205 @@
+Epoch - 1
+
+SOURCE: Tom is happy to be home.
+TARGET: టామ్ ఇంటికి రావడం సంతోషంగా ఉంది.
+PREDICTED: టామ్ ఇప్పుడు చాలా బిజీగా ఉన్నాడు .
+
+SOURCE: We're at home today.
+TARGET: మేము ఈ రోజు ఇంట్లో ఉన్నాము.
+PREDICTED: మేము ఈ రోజు .
+
+SOURCE: How much does a first class ticket cost?
+TARGET: ఫస్ట్ క్లాస్ టికెట్ ధర ఎంత?
+PREDICTED: ?
+
+SOURCE: So we're gonna have a barbecue party. Tell your parents that my parents are gonna be there.
+TARGET: కాబట్టి మేము బార్బెక్యూ పార్టీని కలిగి ఉన్నాము.
+PREDICTED: మేము మీ కంటే మీ కంటే మీ కోసం మేము మీ కోసం మేము మీ కోసం ఎదురు చూస్తున్నాను .
+
+SOURCE: I went to Boston a week ago.
+TARGET: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను.
+PREDICTED: నేను ఎప్పుడూ బోస్టన్‌కు వెళ్లాలని ఎప్పుడూ చూడలేదు .
+
+SOURCE: They won't help us.
+TARGET: వారు మాకు సహాయం చేయరు.
+PREDICTED: వారు మాకు సహాయం చేయడానికి .
+
+SOURCE: I've tried.
+TARGET: నేను ప్రయత్నించాను.
+PREDICTED: నేను .
+
+
+Epoch - 2
+SOURCE: Tom is happy to be home.
+TARGET: టామ్ ఇంటికి రావడం సంతోషంగా ఉంది.
+PREDICTED: టామ్ ఇంటికి తిరిగి వస్తాడు .
+
+SOURCE: We're at home today.
+TARGET: మేము ఈ రోజు ఇంట్లో ఉన్నాము.
+PREDICTED: మేము ఈ రోజు ఇంటికి ఉన్నాము .
+
+SOURCE: How much does a first class ticket cost?
+TARGET: ఫస్ట్ క్లాస్ టికెట్ ధర ఎంత?
+PREDICTED: ఎంత మంది విద్యార్థులు ఎంత మంది ఉన్నారు ?
+
+SOURCE: So we're gonna have a barbecue party. Tell your parents that my parents are gonna be there.
+TARGET: కాబట్టి మేము బార్బెక్యూ పార్టీని కలిగి ఉన్నాము.
+PREDICTED: మీ ఇంటి పని చేయడానికి మేము ఒక విషయం ఏమిటంటే .
+
+SOURCE: I went to Boston a week ago.
+TARGET: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను.
+PREDICTED: నేను ఒక వారం బోస్టన్‌కు వెళ్తాను .
+
+SOURCE: They won't help us.
+TARGET: వారు మాకు సహాయం చేయరు.
+PREDICTED: వారు మాకు సహాయం చేయలేదు .
+
+SOURCE: I've tried.
+TARGET: నేను ప్రయత్నించాను.
+PREDICTED: నేను .
+
+Epoch -3 
+SOURCE: Tom is happy to be home.
+TARGET: టామ్ ఇంటికి రావడం సంతోషంగా ఉంది.
+PREDICTED: టామ్ ఇంట్లో సంతోషంగా ఉన్నాడు .
+
+SOURCE: We're at home today.
+TARGET: మేము ఈ రోజు ఇంట్లో ఉన్నాము.
+PREDICTED: మేము ఈ రోజు ఇంట్లో ఉన్నాము .
+
+SOURCE: How much does a first class ticket cost?
+TARGET: ఫస్ట్ క్లాస్ టికెట్ ధర ఎంత?
+PREDICTED: ఈ ఆట ఎంత మంది విద్యార్థులు ఎంత మంది ఉన్నారు ?
+
+SOURCE: So we're gonna have a barbecue party. Tell your parents that my parents are gonna be there.
+TARGET: కాబట్టి మేము బార్బెక్యూ పార్టీని కలిగి ఉన్నాము.
+PREDICTED: మీరు నా తల్లిదండ్రులు మీ స్వంత మాకు చెప్పండి .
+
+SOURCE: I went to Boston a week ago.
+TARGET: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను.
+PREDICTED: నేను కొన్ని క్రితం బోస్టన్‌కు వెళ్లాను .
+
+SOURCE: They won't help us.
+TARGET: వారు మాకు సహాయం చేయరు.
+PREDICTED: వారు మాకు సహాయం చేయలేదు .
+
+SOURCE: I've tried.
+TARGET: నేను ప్రయత్నించాను.
+PREDICTED: నేను ఎవరినీ ప్రయత్నించాను .
+
+Epoch -4
+SOURCE: Tom is happy to be home.
+TARGET: టామ్ ఇంటికి రావడం సంతోషంగా ఉంది.
+PREDICTED: టామ్ ఇంటికి సంతోషంగా ఉన్నాడు .
+
+SOURCE: We're at home today.
+TARGET: మేము ఈ రోజు ఇంట్లో ఉన్నాము.
+PREDICTED: మేము ఈ రోజు ఇంట్లో ఉన్నాము .
+
+SOURCE: How much does a first class ticket cost?
+TARGET: ఫస్ట్ క్లాస్ టికెట్ ధర ఎంత?
+PREDICTED: మొదటి పది ఎంత ఖర్చవుతుంది ?
+
+SOURCE: So we're gonna have a barbecue party. Tell your parents that my parents are gonna be there.
+TARGET: కాబట్టి మేము బార్బెక్యూ పార్టీని కలిగి ఉన్నాము.
+PREDICTED: మేము మీ తల్లిదండ్రులు మీ తల్లిదండ్రులు విడాకులు తీసుకుంటున్నారు ఉన్నాము .
+
+SOURCE: I went to Boston a week ago.
+TARGET: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను.
+PREDICTED: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను .
+
+SOURCE: They won't help us.
+TARGET: వారు మాకు సహాయం చేయరు.
+PREDICTED: వారు మాకు సహాయం చేయలేదు .
+
+SOURCE: I've tried.
+TARGET: నేను ప్రయత్నించాను.
+PREDICTED: నేను ప్రయత్నించాను .
+
+Epoch - 5
+
+SOURCE: Tom is happy to be home.
+TARGET: టామ్ ఇంటికి రావడం సంతోషంగా ఉంది.
+PREDICTED: టామ్ ఇంటికి సంతోషంగా ఉంది .
+
+SOURCE: We're at home today.
+TARGET: మేము ఈ రోజు ఇంట్లో ఉన్నాము.
+PREDICTED: మేము ఈ రోజు ఇంట్లో ఉన్నాము .
+
+SOURCE: How much does a first class ticket cost?
+TARGET: ఫస్ట్ క్లాస్ టికెట్ ధర ఎంత?
+PREDICTED: మొదటి పది ఎంత ఖర్చు అవుతుంది ?
+
+SOURCE: So we're gonna have a barbecue party. Tell your parents that my parents are gonna be there.
+TARGET: కాబట్టి మేము బార్బెక్యూ పార్టీని కలిగి ఉన్నాము.
+PREDICTED: మేము నా తల్లిదండ్రులు మీ తల్లిదండ్రులకు సమస్య ఉంటే .
+
+SOURCE: I went to Boston a week ago.
+TARGET: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను.
+PREDICTED: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను .
+
+SOURCE: They won't help us.
+TARGET: వారు మాకు సహాయం చేయరు.
+PREDICTED: వారు మాకు సహాయం చేయలేదు .
+
+SOURCE: I've tried.
+TARGET: నేను ప్రయత్నించాను.
+PREDICTED: నేను ప్రయత్నించాను .
+
+Epoch -6
+SOURCE: Tom is happy to be home.
+TARGET: టామ్ ఇంటికి రావడం సంతోషంగా ఉంది.
+PREDICTED: టామ్ ఇంటికి సంతోషంగా ఉంటాడు .
+
+SOURCE: We're at home today.
+TARGET: మేము ఈ రోజు ఇంట్లో ఉన్నాము.
+PREDICTED: మేము ఈ రోజు ఇంట్లో ఉన్నాము .
+
+SOURCE: How much does a first class ticket cost?
+TARGET: ఫస్ట్ క్లాస్ టికెట్ ధర ఎంత?
+PREDICTED: మొదటి పది డాలర్లు రుణం ఎంత ?
+
+SOURCE: So we're gonna have a barbecue party. Tell your parents that my parents are gonna be there.
+TARGET: కాబట్టి మేము బార్బెక్యూ పార్టీని కలిగి ఉన్నాము.
+PREDICTED: మేము మీకు కావాలంటే పిజ్జా ముక్కను ఉన్న వారిని సందర్శిస్తానని , మేము దానిని మీ తల్లిదండ్రులకు కట్టుబడి ఉండాలి .
+
+SOURCE: I went to Boston a week ago.
+TARGET: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను.
+PREDICTED: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను .
+
+SOURCE: They won't help us.
+TARGET: వారు మాకు సహాయం చేయరు.
+PREDICTED: వారు మాకు సహాయం చేయరు .
+
+SOURCE: I've tried.
+TARGET: నేను ప్రయత్నించాను.
+PREDICTED: నేను ప్రయత్నించాను .
+
+Epoch -7
+SOURCE: Tom is happy to be home.
+TARGET: టామ్ ఇంటికి రావడం సంతోషంగా ఉంది.
+PREDICTED: టామ్ ఇంటికి సంతోషంగా ఉంది .
+
+SOURCE: We're at home today.
+TARGET: మేము ఈ రోజు ఇంట్లో ఉన్నాము.
+PREDICTED: మేము ఈ రోజు ఇంట్లో ఉన్నాము .
+
+SOURCE: How much does a first class ticket cost?
+TARGET: ఫస్ట్ క్లాస్ టికెట్ ధర ఎంత?
+PREDICTED: మొదటి అంతస్తు ధర ఎంత ?
+
+SOURCE: So we're gonna have a barbecue party. Tell your parents that my parents are gonna be there.
+TARGET: కాబట్టి మేము బార్బెక్యూ పార్టీని కలిగి ఉన్నాము.
+PREDICTED: మేము మీకు కావాలంటే పిజ్జా ముక్కను ఉన్న వారిని నియమించుకోవాలి అని చెప్పండి .
+
+SOURCE: I went to Boston a week ago.
+TARGET: నేను వారం క్రితం బోస్టన్‌కు వెళ్లాను.
+PREDICTED: నేను ఒక వారం క్రితం బోస్టన్‌కు వెళ్లాను .
+
+SOURCE: They won't help us.
+TARGET: వారు మాకు సహాయం చేయరు.
+PREDICTED: వారు మాకు సహాయం చేయరు .
+
+SOURCE: I've tried.
+TARGET: నేను ప్రయత్నించాను.
+PREDICTED: నేను ప్రయత్నించాను .
